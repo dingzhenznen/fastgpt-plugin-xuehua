@@ -1,0 +1,1 @@
+# fastgpt-plugin-xuehua
