@@ -94,9 +94,9 @@ jobs:
         working-directory: /tmp/digests
         run: |
           # Define all tags for different registries
-          GITHUB_TAG="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin:${{ github.ref_name }}"
-          GITHUB_LATEST="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin:latest"
-          GITHUB_SHA="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin:${{ github.sha }}"
+          GITHUB_TAG="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-xuehua:${{ github.ref_name }}"
+          GITHUB_LATEST="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-xuehua:latest"
+          GITHUB_SHA="ghcr.io/${{ github.repository_owner }}/fastgpt-plugin-xuehua:${{ github.sha }}"
 
 
           ALI_LATEST="registry.cn-hangzhou.aliyuncs.com/dingzhen0725/fastgpt-plugin:latest"
