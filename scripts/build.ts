@@ -13,6 +13,9 @@ const tools = fs.readdirSync(toolsDir).filter((item) => !['.DS_Store'].includes(
 export const buildATool = async (tool: string, dist: string = distToolDir) => {
   const filepath = path.join(toolsDir, tool);
   Bun.build({
+    define: {
+       "process.env": JSON.stringify(process.env) 
+    },
     entrypoints: [filepath],
     outdir: dist,
     naming: tool + '.js',

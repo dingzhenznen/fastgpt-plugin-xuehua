@@ -172,6 +172,7 @@ export async function dispatchWithNewWorker(data: {
   const workerPath = isProd ? './dist/worker.js' : `${process.cwd()}/dist/worker.js`;
   const worker = new Worker(workerPath, {
     env: {
+      ...process.env,
       NODE_ENV: process.env.NODE_ENV,
       LOG_LEVEL: process.env.LOG_LEVEL
     },
