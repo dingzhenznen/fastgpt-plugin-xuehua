@@ -51,7 +51,7 @@ parentPort?.on('message', async (params: Main2WorkerMessageType) => {
         };
 
         // sendMessage is optinal
-        Object.freeze(process.env);
+        //Object.freeze(process.env);
         const result = await tool.cb(data.inputs, {
           systemVar: data.systemVar,
           streamResponse: sendMessage
