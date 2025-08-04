@@ -212,6 +212,8 @@ export const urlsFetch = async ({
       timeout: 30000
     });
 
+    console.log('fetchRes', fetchRes);
+
     const $ = cheerio.load(fetchRes.data);
     const { title, html, usedSelector } = cheerioToHtml({
       fetchUrl: url,
@@ -248,6 +250,10 @@ export async function tool(props: z.infer<typeof InputType>): Promise<z.infer<ty
     url: props.url,
     selector: 'body'
   });
+
+  console.log('proxy ', process.env.HTTP_PROXY);
+  const res = await axios.get('http://httpbin.org/ip')
+  console.log('axios IP:', res.data.origin);
 
   return {
     result: content
