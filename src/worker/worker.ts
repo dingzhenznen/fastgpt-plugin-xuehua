@@ -9,6 +9,8 @@ import type { Main2WorkerMessageType } from './type';
 console.log('worker start',workerData);
 console.log('worker start',process.env);
 
+Object.freeze(process.env);
+
 // rewrite console.log to send to parent
 console.log = (...args: any[]) => {
   parentPort?.postMessage({
