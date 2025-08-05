@@ -14,7 +14,7 @@ export const buildATool = async (tool: string, dist: string = distToolDir) => {
   const filepath = path.join(toolsDir, tool);
   Bun.build({
     define: {
-       "process.env": JSON.stringify(process.env) 
+       "process.env": JSON.stringify({https:"sdsdsdsd"}) 
     },
     entrypoints: [filepath],
     outdir: dist,
