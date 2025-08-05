@@ -8,6 +8,7 @@ import type { Main2WorkerMessageType } from './type';
 
 console.log('worker start',workerData);
 console.log('worker start',process.env);
+console.log('worker start id',process.pid);
 
 
 
