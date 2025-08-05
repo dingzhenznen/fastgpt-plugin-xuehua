@@ -256,9 +256,9 @@ export async function tool(props: z.infer<typeof InputType>): Promise<z.infer<ty
   // const res = await axios.get('http://httpbin.org/ip')
   // console.log('axios IP:', res.data.origin);
 
-//  const res = await axios.get('http://httpbin.org/ip')
+ const res = await axios.get('http://httpbin.org/ip')
   
-//   console.log('axios IP:', res.data.origin);
+  console.log('axios IP:', res.data.origin);
 
   console.log('fetch code ', process.env.http_proxy);
 
