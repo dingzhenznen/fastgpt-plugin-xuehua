@@ -6,9 +6,9 @@ import { getErrText } from '@tool/utils/err';
 import type { Main2WorkerMessageType } from './type';
 
 
-console.log('worker start',workerData);
-console.log('worker start',process.env);
-console.log('worker start id',process.pid);
+// console.log('worker start',workerData);
+// console.log('worker start',process.env);
+// console.log('worker start id',process.pid);
 
 
 
@@ -51,8 +51,8 @@ parentPort?.on('message', async (params: Main2WorkerMessageType) => {
           });
         };
 
-        console.log('worker start2',process.env);
-        console.log('worker start id2',process.pid);
+        // console.log('worker start2',process.env);
+        // console.log('worker start id2',process.pid);
 
         // sendMessage is optinal
         //Object.freeze(process.env);

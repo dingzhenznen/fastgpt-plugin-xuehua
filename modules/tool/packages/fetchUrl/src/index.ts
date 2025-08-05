@@ -246,17 +246,23 @@ export const OutputType = z.object({
 });
 
 export async function tool(props: z.infer<typeof InputType>): Promise<z.infer<typeof OutputType>> {
-  const { content } = await urlsFetch({
-    url: props.url,
-    selector: 'body'
-  });
+  // const { content } = await urlsFetch({
+  //   url: props.url,
+  //   selector: 'body'
+  // });
 
-  console.log('fetch code ', process.env);
-  console.log('fetch code pid',process.pid);
-  const res = await axios.get('http://httpbin.org/ip')
-  console.log('axios IP:', res.data.origin);
+  // console.log('fetch code ', process.env);
+  // console.log('fetch code pid',process.pid);
+  // const res = await axios.get('http://httpbin.org/ip')
+  // console.log('axios IP:', res.data.origin);
+
+//  const res = await axios.get('http://httpbin.org/ip')
+  
+//   console.log('axios IP:', res.data.origin);
+
+  console.log('fetch code ', process.env.http_proxy);
 
   return {
-    result: content
+    result:   'success'
   };
 }
