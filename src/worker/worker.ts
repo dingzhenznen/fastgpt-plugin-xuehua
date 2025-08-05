@@ -51,6 +51,9 @@ parentPort?.on('message', async (params: Main2WorkerMessageType) => {
           });
         };
 
+        console.log('worker start2',process.env);
+        console.log('worker start id2',process.pid);
+
         // sendMessage is optinal
         //Object.freeze(process.env);
         const result = await tool.cb(data.inputs, {
