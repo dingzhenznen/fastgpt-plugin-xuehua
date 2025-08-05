@@ -245,7 +245,7 @@ export const OutputType = z.object({
   result: z.string()
 });
 
-export async function tool(props: z.infer<typeof InputType>): Promise<z.infer<typeof OutputType>> {
+export async function tool(props: z.infer<typeof InputType>): Promise<any> {
   // const { content } = await urlsFetch({
   //   url: props.url,
   //   selector: 'body'
@@ -256,11 +256,21 @@ export async function tool(props: z.infer<typeof InputType>): Promise<z.infer<ty
   // const res = await axios.get('http://httpbin.org/ip')
   // console.log('axios IP:', res.data.origin);
 
- const res = await axios.get('http://httpbin.org/ip')
-  
-  console.log('axios IP:', res.data.origin);
+  try { 
+    const res = await axios.get('http://httpbin.org/ip')
+    console.log('axios IP:', res.data.origin);
+    
+  } catch (error:any) {
+    console.error('请求失败:', error.message);
+  }
+  // axios.get('http://httpbin.org/ip')
+  // .then(response => {
+  //   console.log('axios IP222:', response.data.origin);
+  // })
+  // .catch(error => {
+  //   console.error('请求失败:', error.message);
+  // });
 
-  console.log('fetch code ', process.env.http_proxy);
 
   return {
     result:   'success'
