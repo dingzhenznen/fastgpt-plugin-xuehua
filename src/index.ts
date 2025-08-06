@@ -9,8 +9,8 @@ import { connectSignoz } from './utils/signoz';
 import { initModels } from '@model/init';
 import setupProxy from './utils/proxy';
 setupProxy()
-// import initFetch from './utils/initFetch';
-// initFetch()
+import initFetch from './utils/initFetch';
+initFetch()
 
 console.log('mainsss',process.pid );
 

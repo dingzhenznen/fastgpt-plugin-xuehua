@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import * as cheerio from 'cheerio';
+import axios from 'axios';
 
 export const InputType = z.object({
   query: z.string(),
@@ -21,6 +22,14 @@ export async function tool({
   url
 }: z.infer<typeof InputType>): Promise<z.infer<typeof OutputType>> {
   try {
+    console.log('proxy ', process.env.HTTP_PROXY);
+    axios.get('http://httpbin.org/ip')
+    .then(response => {
+      console.log('axios IP:', response.data.origin);
+    })
+    .catch(error => {
+      console.error('请求失败:', error.message);
+    });
     const response = await fetch(`${url}?q=${encodeURIComponent(query)}&language=auto`);
     const html = await response.text();
     const $ = cheerio.load(html, {
