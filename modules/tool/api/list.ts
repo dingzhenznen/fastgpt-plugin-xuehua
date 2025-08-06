@@ -9,20 +9,19 @@ import https from 'https';
 
 import http from 'http';
 
-import { setGlobalDispatcher, ProxyAgent }  from "undici";
-const httpDispatcher = new ProxyAgent( "http://127.0.0.1:7897");
+import { setGlobalDispatcher, ProxyAgent,fetch }  from "undici";
+const httpDispatcher = new ProxyAgent(process.env?.HTTP_PROXY as string);
 setGlobalDispatcher(httpDispatcher);
-
 
 export const getToolsHandler = s.route(contract.tool.list, async () => {
 
 
-  // fetch("https://httpbin.org/ip")
-  //   .then((res) => res.json())
-  //   .then((res) => {
-  //     console.log("fetch IP:", res);
-  //   })
-  //   .catch((err) => console.log("请求失败：", err));
+  fetch("https://httpbin.org/ip")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log("fetch IP:", res);
+    })
+    .catch((err) => console.log("请求失败：", err));
 
 
   // axios.get('http://httpbin.org/ip')
