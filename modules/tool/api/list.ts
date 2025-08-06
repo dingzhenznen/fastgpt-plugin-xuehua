@@ -5,14 +5,6 @@ import { formatToolList } from '@tool/utils/tool';
 
 import axios from 'axios';
 
-import https from 'https';
-
-import http from 'http';
-
-import { setGlobalDispatcher, ProxyAgent,fetch }  from "undici";
-const httpDispatcher = new ProxyAgent(process.env?.HTTP_PROXY as string);
-setGlobalDispatcher(httpDispatcher);
-
 export const getToolsHandler = s.route(contract.tool.list, async () => {
 
 
