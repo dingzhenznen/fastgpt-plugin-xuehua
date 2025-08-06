@@ -20,7 +20,7 @@ const handleFetch = (proxy:string)=>{
   const httpDispatcher = new ProxyAgent(proxy);
     setGlobalDispatcher(httpDispatcher);
     // @ts-ignore
-    global.fetch = fetch;
+    globalThis.fetch = fetch;
 }
 
 export default initProxy;
