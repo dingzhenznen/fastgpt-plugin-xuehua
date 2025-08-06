@@ -16,7 +16,7 @@ setGlobalDispatcher(httpDispatcher);
 export const getToolsHandler = s.route(contract.tool.list, async () => {
 
 
-  fetch("https://baidu.com")
+  fetch("https://www.baidu.com/")
     .then((res) => res.text())
     .then((res) => {
       console.log('baidu result',res.length);
