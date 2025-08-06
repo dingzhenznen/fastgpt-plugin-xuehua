@@ -16,12 +16,12 @@ setGlobalDispatcher(httpDispatcher);
 export const getToolsHandler = s.route(contract.tool.list, async () => {
 
 
-  fetch("https://httpbin.org/ip")
-    .then((res) => res.json())
+  fetch("https://baidu.com")
+    .then((res) => res.text())
     .then((res) => {
-      console.log("fetch IP:", res);
+      console.log('baidu result',res.length);
     })
-    .catch((err) => console.log("请求失败：", err));
+    .catch((err) => console.log("baidu 请求失败：", err));
 
 
   // axios.get('http://httpbin.org/ip')
