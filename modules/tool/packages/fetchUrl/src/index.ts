@@ -212,8 +212,6 @@ export const urlsFetch = async ({
       timeout: 30000
     });
 
-    console.log('fetchRes', fetchRes);
-
     const $ = cheerio.load(fetchRes.data);
     const { title, html, usedSelector } = cheerioToHtml({
       fetchUrl: url,
@@ -245,34 +243,13 @@ export const OutputType = z.object({
   result: z.string()
 });
 
-export async function tool(props: z.infer<typeof InputType>): Promise<any> {
-  // const { content } = await urlsFetch({
-  //   url: props.url,
-  //   selector: 'body'
-  // });
-
-  // console.log('fetch code ', process.env);
-  // console.log('fetch code pid',process.pid);
-  // const res = await axios.get('http://httpbin.org/ip')
-  // console.log('axios IP:', res.data.origin);
-
-  try { 
-    const res = await axios.get('http://httpbin.org/ip')
-    console.log('axios IP:', res.data.origin);
-    
-  } catch (error:any) {
-    console.error('请求失败:', error.message);
-  }
-  // axios.get('http://httpbin.org/ip')
-  // .then(response => {
-  //   console.log('axios IP222:', response.data.origin);
-  // })
-  // .catch(error => {
-  //   console.error('请求失败:', error.message);
-  // });
-
+export async function tool(props: z.infer<typeof InputType>): Promise<z.infer<typeof OutputType>> {
+  const { content } = await urlsFetch({
+    url: props.url,
+    selector: 'body'
+  });
 
   return {
-    result:   'success'
+    result: content
   };
 }
