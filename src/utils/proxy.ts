@@ -16,14 +16,22 @@ const handleAxios =(proxy:string)=>{
   axios.defaults.httpsAgent =  new HttpsProxyAgent(proxy);
 }
 const handleFetch = (proxy:string)=>{
+
   console.log('init fetch proxy',proxy);
-  const httpDispatcher = new ProxyAgent(proxy);
-  setGlobalDispatcher(httpDispatcher);
   // @ts-ignore
-  globalThis.fetch =(url:string,options:any={})=>{
-    console.log('un fetch')
-    return unFetch(url,options)
-  }
+  globalThis.fetch =(url:string, options:any = {}) => {
+    console.log('init axios fetch');
+    return axios(url,{
+      method: options.method || 'GET',
+      data: options.body || {},
+      headers: options.headers || {}
+    }).then(response => ({
+      ok: response.status >= 200 && response.status < 300,
+      status: response.status,
+      json: () => Promise.resolve(response.data),
+      text: () => Promise.resolve(JSON.stringify(response.data))
+    }));
+  };
 }
 
 export default initProxy;
