@@ -56,7 +56,7 @@ export const getToolsHandler = s.route(contract.tool.list, async () => {
   //   });
   // });
 
-  req.end();
+  // req.end();
 
   return {
     status: 200,
