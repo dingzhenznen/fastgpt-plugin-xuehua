@@ -1,5 +1,8 @@
 
-console.log("init fetch Proxy");
+//console.log("init fetch Proxy");
 import {ProxyAgent,setGlobalDispatcher} from "undici";
-const httpDispatcher = new ProxyAgent(process.env.HTTP_PROXY as string);
-setGlobalDispatcher(httpDispatcher);
+if(process.env.HTTP_PROXY){
+  const httpDispatcher = new ProxyAgent(process.env.HTTP_PROXY as string);
+  setGlobalDispatcher(httpDispatcher);
+}
+
