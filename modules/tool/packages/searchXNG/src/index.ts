@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import * as cheerio from 'cheerio';
-import '@tool/utils/initProxy'
 
 export const InputType = z.object({
   query: z.string(),
@@ -57,3 +56,5 @@ export async function tool({
     return Promise.reject({ error });
   }
 }
+
+// tool({ url: '',query:'' })

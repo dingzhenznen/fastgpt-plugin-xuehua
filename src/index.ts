@@ -7,8 +7,8 @@ import { isProd } from './constants';
 import { initS3Server } from './s3/config';
 import { connectSignoz } from './utils/signoz';
 import { initModels } from '@model/init';
-import initProxy from './utils/proxy';
-initProxy()
+// import initProxy from './utils/proxy';
+// // initProxy()
 
 console.log('mainsss',process.pid );
 
