@@ -23,9 +23,9 @@ export async function tool({
 }: z.infer<typeof InputType>): Promise<z.infer<typeof OutputType>> {
   try {
 
-    const res = await fetch("http://httpbin.org/ip")
-    const data = await res.json()
-    console.log('fetchddd',data)
+    // const res = await fetch("http://httpbin.org/ip")
+    // const data = await res.json()
+    // console.log('fetchddd',data)
 
     const response = await fetch(`${url}?q=${encodeURIComponent(query)}&language=auto`);
     const html = await response.text();
