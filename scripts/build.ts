@@ -3,7 +3,7 @@ import { $ } from 'bun';
 import fs from 'fs';
 import path from 'path';
 import { copyToolIcons } from '../modules/tool/utils/icon';
-import { autoToolIdPlugin,importFetchPlugin } from './plugin';
+import { autoToolIdPlugin,setupFetchPlugin } from './plugin';
 import { exit } from 'process';
 
 const toolsDir = path.join(__dirname, '..', 'modules', 'tool', 'packages');
@@ -11,7 +11,7 @@ const distDir = path.join(__dirname, '..', 'dist');
 const distToolDir = path.join(distDir, 'tools');
 const tools = fs.readdirSync(toolsDir).filter((item) => !['.DS_Store'].includes(item));
 
-// console.log('build env',process.env);
+console.log('build env',process.env);
 export const buildATool = async (tool: string, dist: string = distToolDir) => {
   const filepath = path.join(toolsDir, tool);
   Bun.build({
@@ -22,8 +22,7 @@ export const buildATool = async (tool: string, dist: string = distToolDir) => {
     outdir: dist,
     naming: tool + '.js',
     target: 'node',
-    plugins: [autoToolIdPlugin,importFetchPlugin],
-    minify: true
+    plugins: [autoToolIdPlugin,setupFetchPlugin],
   });
 };
 

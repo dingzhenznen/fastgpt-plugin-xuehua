@@ -161,7 +161,7 @@ export const autoToolIdPlugin: BunPlugin = {
 };
 
 
-export const importFetchPlugin: BunPlugin = {
+export const setupFetchPlugin: BunPlugin = {
   name: 'import-fetch',
   setup(build) {
     build.onLoad(
@@ -175,7 +175,7 @@ export const importFetchPlugin: BunPlugin = {
 
         if (content.includes(' fetch(')) {
           return {
-            contents: `import '@tool/utils/initProxy'\n${content}`,
+            contents: `import '@tool/utils/setupProxy'\n${content}`,
             loader: 'ts'
           };
         }
