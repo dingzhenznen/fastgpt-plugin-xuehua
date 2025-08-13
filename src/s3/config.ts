@@ -1,8 +1,7 @@
 import { z } from 'zod';
 import { S3Service } from './controller';
-const { HttpsProxyAgent } = require('https-proxy-agent');
-
-const { HttpProxyAgent } = require('http-proxy-agent');
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import { HttpProxyAgent } from 'http-proxy-agent';
 
 export type FileConfig = {
   maxFileSize: number; // 文件大小限制（字节）
@@ -13,7 +12,8 @@ export type FileConfig = {
   accessKey: string; // MinIO access key
   secretKey: string; // MinIO secret key
   bucket: string; // 存储桶名称
-  transportAgent: any;
+  transportAgent: HttpsProxyAgent<string>| HttpProxyAgent<string>| undefined;
+  pathStyle: boolean;
 };
 
 let transportAgent;
@@ -34,7 +34,8 @@ export const defaultFileConfig: FileConfig = {
   accessKey: process.env.MINIO_ACCESS_KEY || 'minioadmin',
   secretKey: process.env.MINIO_SECRET_KEY || 'minioadmin',
   bucket: process.env.MINIO_BUCKET || 'files',
-  transportAgent: transportAgent
+  transportAgent: transportAgent,
+  pathStyle: process.env.MINIO_FORCE_PATH_STYLE === 'true' ? true : false // 是否强制使用路径样式
 };
 
 export const FileMetadataSchema = z.object({

@@ -6,7 +6,7 @@ import { getErrText } from '@tool/utils/err';
 import type { Main2WorkerMessageType } from './type';
 
 // console.log('worker start',workerData);
-console.log('worker start',process.env);
+// console.log('worker start',process.env);
 // console.log('worker start id',process.pid);
 
 // rewrite console.log to send to parent

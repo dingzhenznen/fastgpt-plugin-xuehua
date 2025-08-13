@@ -8,12 +8,12 @@ import axios from 'axios';
 export const getToolsHandler = s.route(contract.tool.list, async () => {
 
 
-  fetch("https://www.baidu.com/")
-    .then((res) => res.text())
-    .then((res) => {
-      console.log('baidu result',res.length);
-    })
-    .catch((err) => console.log("baidu 请求失败：", err));
+  // fetch("https://www.baidu.com/")
+  //   .then((res) => res.text())
+  //   .then((res) => {
+  //     console.log('baidu result',res.length);
+  //   })
+  //   .catch((err) => console.log("baidu 请求失败：", err));
 
 
   // axios.get('http://httpbin.org/ip')

@@ -53,7 +53,8 @@ export class S3Service {
       useSSL: this.config.useSSL,
       accessKey: this.config.accessKey,
       secretKey: this.config.secretKey,
-      transportAgent: this.config.transportAgent
+      transportAgent: this.config.transportAgent,
+      pathStyle:this.config.pathStyle,
     });
   }
 
@@ -73,33 +74,33 @@ export class S3Service {
 
       const [, err] = await catchError(() =>
         Promise.all([
-          this.minioClient.setBucketPolicy(
-            this.config.bucket,
-            JSON.stringify({
-              Version: '2012-10-17',
-              Statement: [
-                {
-                  Effect: 'Allow',
-                  Principal: '*',
-                  Action: ['s3:GetObject'],
-                  Resource: [`arn:aws:s3:::${this.config.bucket}/*`]
-                }
-              ]
-            })
-          ),
-          this.minioClient.setBucketLifecycle(this.config.bucket, {
-            Rule: [
-              {
-                ID: 'AutoDeleteRule',
-                Status: 'Enabled',
-                Expiration: {
-                  Days: this.config.retentionDays,
-                  DeleteMarker: false,
-                  DeleteAll: false
-                }
-              }
-            ]
-          })
+          // this.minioClient.setBucketPolicy(
+          //   this.config.bucket,
+          //   JSON.stringify({
+          //     Version: '2012-10-17',
+          //     Statement: [
+          //       {
+          //         Effect: 'Allow',
+          //         Principal: '*',
+          //         Action: ['s3:GetObject'],
+          //         Resource: [`arn:aws:s3:::${this.config.bucket}/*`]
+          //       }
+          //     ]
+          //   })
+          // ),
+          // this.minioClient.setBucketLifecycle(this.config.bucket, {
+          //   Rule: [
+          //     {
+          //       ID: 'AutoDeleteRule',
+          //       Status: 'Enabled',
+          //       Expiration: {
+          //         Days: this.config.retentionDays,
+          //         DeleteMarker: false,
+          //         DeleteAll: false
+          //       }
+          //     }
+          //   ]
+          // })
         ])
       );
 
